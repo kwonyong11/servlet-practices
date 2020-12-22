@@ -22,7 +22,7 @@ public class EmaillistController extends HttpServlet {
 		String actionName=request.getParameter("a");
 		
 		if("form".equals(actionName)) {
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB_INF/views/form.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/form.jsp");
 			rd.forward(request, response);
 		}else if("add".equals(actionName)) {
 			String firstName = request.getParameter("firstName");
@@ -41,7 +41,7 @@ public class EmaillistController extends HttpServlet {
 			List<EmaillistVo> list = new EmaillistDao().findAll();
 			
 			request.setAttribute("list", list);
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB_INF/views/index.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/index.jsp");
 			rd.forward(request, response);
 		}
 	}
