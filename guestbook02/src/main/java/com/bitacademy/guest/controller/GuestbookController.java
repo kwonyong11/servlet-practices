@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.bitacademy.guest.dao.GuestbookDao;
 import com.bitacademy.guest.vo.GuestbookVo;
+import com.bitacademy.web.mvc.WebUtil;
 
 
 public class GuestbookController extends HttpServlet {
@@ -21,8 +22,7 @@ public class GuestbookController extends HttpServlet {
 		
 		String actionName=request.getParameter("a");
 		if("form".equals(actionName)) {
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/form.jsp");
-			rd.forward(request, response);
+			WebUtil.forward(request, response, "/WEB-INF/views/index.jsp");
 		}else if("add".equals(actionName)) {
 			String name = request.getParameter("name");
 			String password = request.getParameter("password");
@@ -34,27 +34,24 @@ public class GuestbookController extends HttpServlet {
 			vo.setMessage(message);
 			
 			new GuestbookDao().insert(vo);
-
-			response.sendRedirect(request.getContextPath() + "/gl");
+			WebUtil.redirect(request, response, request.getContextPath()+"/gl");
 		}
 		else if("deleteform".equals(actionName)) {
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/deleteform.jsp");
-			rd.forward(request, response);
+			WebUtil.forward(request, response, "/WEB-INF/views/deleteform.jsp");
 		}
 		else if("delete".equals(actionName)) {
 			Long no=Long.parseLong(request.getParameter("no"));
 			String password=request.getParameter("password");
 			
 			new GuestbookDao().delete(no, password);
-			response.sendRedirect(request.getContextPath() + "/gl");
+			WebUtil.redirect(request, response, request.getContextPath()+"/gl");
 		}
 		
 		else {
 			List<GuestbookVo> list = new GuestbookDao().findAll();
 			
 			request.setAttribute("list", list);
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/index.jsp");
-			rd.forward(request, response);
+			WebUtil.forward(request, response, "/WEB-INF/views/index.jsp");
 		}
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
