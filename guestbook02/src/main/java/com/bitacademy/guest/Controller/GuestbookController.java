@@ -20,7 +20,6 @@ public class GuestbookController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		String actionName=request.getParameter("a");
-		System.out.println(actionName);
 		if("form".equals(actionName)) {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/form.jsp");
 			rd.forward(request, response);
