@@ -1,0 +1,30 @@
+네트워크 기초
+   |---->리눅스 네트워크 관리
+   |---->io ---->network(tcp/ip, socket) programming
+
+C:\Windows\System32\drivers\etc
+
+/etc/sysconfig/network-scripts/ifcfg-enp0s3
+
+-- windows--
+IPADDR=192.168.0.2
+NETMASK=255.255.0.1
+GATEWAY=192.168.0.1
+
+-- Linux --
+IPADDR=192.168.0.6
+NETMASK=255.255.0.1
+GATEWAY=192.168.0.1
+
+-- DNS --
+nameserver 168.126.63.1
+nameserver 168.126.63.2
+
+vi /etc/resolv.conf
+nameserver 168.126.63.1
+nameserver 168.126.63.2
+
+
+/usr/local/javafullstack
+|---- java1.8
+|---- tomcat8.5
