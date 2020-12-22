@@ -11,8 +11,6 @@
   </welcome-file-list>
   
   <servlet>
-    <description></description>
-    <display-name>EmaillistController</display-name>
     <servlet-name>EmaillistController</servlet-name>
     <servlet-class>com.bitacademy.emaillist.controller.EmaillistController</servlet-class>
   </servlet>

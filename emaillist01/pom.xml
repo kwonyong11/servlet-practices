@@ -7,8 +7,9 @@
   </parent>
   <artifactId>emaillist01</artifactId>
   <packaging>war</packaging>
+  
   <dependencies>
-  <dependency>
+   <dependency>
 	    <groupId>org.mariadb.jdbc</groupId>
 	    <artifactId>mariadb-java-client</artifactId>
 	    <version>2.4.4</version>

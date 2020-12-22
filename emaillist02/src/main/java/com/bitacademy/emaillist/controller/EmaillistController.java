@@ -1,9 +1,9 @@
 package com.bitacademy.emaillist.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,20 +19,31 @@ public class EmaillistController extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		
-		
 		String actionName=request.getParameter("a");
-		if("list".equals(actionName)) {
+		
+		if("form".equals(actionName)) {
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB_INF/views/form.jsp");
+			rd.forward(request, response);
+		}else if("add".equals(actionName)) {
+			String firstName = request.getParameter("firstName");
+			String lastName = request.getParameter("lastName");
+			String email = request.getParameter("email");
 			
-		}else if("form".equals(actionName)) {
+			EmaillistVo vo = new EmaillistVo();
+			vo.setFirstName(firstName);
+			vo.setLastName(lastName);
+			vo.setEmail(email);
 			
+			new EmaillistDao().insert(vo);
+
+			response.sendRedirect(request.getContextPath() + "/el");
 		}else {
 			List<EmaillistVo> list = new EmaillistDao().findAll();
+			
+			request.setAttribute("list", list);
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB_INF/views/index.jsp");
+			rd.forward(request, response);
 		}
-		
-		response.setContentType("text/html; charset=utf-8");
-		
-		PrintWriter pw=response.getWriter();
-		pw.println("<h1>Emaillist!</h1>");
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
