@@ -1,4 +1,4 @@
-package com.bitacademy.guest.Controller;
+package com.bitacademy.guest.controller;
 
 import java.io.IOException;
 import java.util.List;
