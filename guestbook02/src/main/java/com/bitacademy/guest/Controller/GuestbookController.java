@@ -1,4 +1,4 @@
-package com.bitacademy.emaillist.controller;
+package com.bitacademy.guest.Controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,14 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.bitacademy.emaillist.dao.EmaillistDao;
-import com.bitacademy.emaillist.vo.EmaillistVo;
+import com.bitacademy.guest.dao.GuestbookDao;
+import com.bitacademy.guest.vo.GuestbookVo;
 
-public class EmaillistController extends HttpServlet {
+
+public class GuestbookController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
 		
 		String actionName=request.getParameter("a");
@@ -25,29 +25,41 @@ public class EmaillistController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/form.jsp");
 			rd.forward(request, response);
 		}else if("add".equals(actionName)) {
-			String firstName = request.getParameter("firstName");
-			String lastName = request.getParameter("lastName");
-			String email = request.getParameter("email");
+			String name = request.getParameter("name");
+			String password = request.getParameter("password");
+			String message = request.getParameter("message");
 			
-			EmaillistVo vo = new EmaillistVo();
-			vo.setFirstName(firstName);
-			vo.setLastName(lastName);
-			vo.setEmail(email);
+			GuestbookVo vo = new GuestbookVo();
+			vo.setName(name);
+			vo.setPassword(password);
+			vo.setMessage(message);
 			
-			new EmaillistDao().insert(vo);
+			new GuestbookDao().insert(vo);
 
-			response.sendRedirect(request.getContextPath() + "/el");
-		}else {
-			List<EmaillistVo> list = new EmaillistDao().findAll();
+			response.sendRedirect(request.getContextPath() + "/gl");
+		}
+		else if("deleteform".equals(actionName)) {
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/deleteform.jsp");
+			rd.forward(request, response);
+		}
+		else if("delete".equals(actionName)) {
+			Long no=Long.parseLong(request.getParameter("no"));
+			String password=request.getParameter("password");
+			
+			new GuestbookDao().delete(no, password);
+			response.sendRedirect(request.getContextPath() + "/gl");
+		}
+		
+		else {
+			List<GuestbookVo> list = new GuestbookDao().findAll();
 			
 			request.setAttribute("list", list);
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/index.jsp");
 			rd.forward(request, response);
 		}
 	}
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		doGet(request, response);
 	}
 
