@@ -21,9 +21,7 @@ public class GuestbookController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		String actionName=request.getParameter("a");
-		if("form".equals(actionName)) {
-			WebUtil.forward(request, response, "/WEB-INF/views/index.jsp");
-		}else if("add".equals(actionName)) {
+		if("add".equals(actionName)) {
 			String name = request.getParameter("name");
 			String password = request.getParameter("password");
 			String message = request.getParameter("message");
