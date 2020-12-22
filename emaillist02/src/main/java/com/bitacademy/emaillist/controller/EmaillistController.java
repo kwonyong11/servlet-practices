@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bitacademy.emaillist.dao.EmaillistDao;
+import com.bitacademy.emaillist.vo.EmaillistVo;
+
 public class EmaillistController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
