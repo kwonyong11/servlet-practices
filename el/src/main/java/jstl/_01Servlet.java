@@ -18,7 +18,7 @@ public class _01Servlet extends HttpServlet {
 		long lVal = 10;
 		float fVal = 1.4f;
 		boolean bVal = true;
-		String sVal = "가나다라마바사";
+		String sVal = "가\n나\n다\n라\n마\n바\n사";
 		
 		
 		// 객체 테스트

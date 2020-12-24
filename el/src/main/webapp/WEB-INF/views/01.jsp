@@ -2,6 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	pageContext.setAttribute("newLine", "\n");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +17,7 @@
 	${lVal }<br>
 	${fVal }<br>
 	${bVal }<br>
-	${sVal }<br>
+	${fn:replace(sVal, newLine, "<br>") }<br>
 	-${dVal }-<br/>
 	-${obj }-<br/>
 	${vo.no }<br/>
