@@ -1,3 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -37,5 +40,10 @@
 	-${param.a + 10}-<br/>
 	-${param.email }-<br/>
 	
+	<h1>Map으로 값 받아보기</h1>
+	${map.ival }<br/>
+	${map.lval }<br/>
+	${map.fval }<br/>
+	${map.bval }<br/>
 </body>
 </html>

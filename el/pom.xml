@@ -8,6 +8,11 @@
   <artifactId>jstlel</artifactId>
   <packaging>war</packaging>
   <dependencies>
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>jstl</artifactId>
+	    <version>1.2</version>
+	</dependency>
   </dependencies>
   <build>
       <finalName>jstlel</finalName>

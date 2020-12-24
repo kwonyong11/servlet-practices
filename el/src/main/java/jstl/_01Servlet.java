@@ -1,6 +1,9 @@
 package jstl;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +27,12 @@ public class _01Servlet extends HttpServlet {
 		vo.setNo(lVal);
 		vo.setName("권용");
 		
+		// Map을 사용하여 여러 값을 한 번에 넘기기
+		Map<String, Object> map = new HashMap<>();
+		map.put("ival", iVal);
+		map.put("lval", lVal);
+		map.put("fval", fVal);
+		map.put("bval", bVal);
 		
 		request.setAttribute("iVal", iVal);
 		request.setAttribute("lVal", lVal);
@@ -32,6 +41,7 @@ public class _01Servlet extends HttpServlet {
 		request.setAttribute("sVal", sVal);
 		request.setAttribute("obj", obj);
 		request.setAttribute("vo", vo);
+		request.setAttribute("map", map);
 		request.getRequestDispatcher("/WEB-INF/views/01.jsp").forward(request, response);
 	}
 
