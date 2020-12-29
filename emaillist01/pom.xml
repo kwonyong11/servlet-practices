@@ -49,6 +49,7 @@
             </configuration>
             
          </plugin>
+         
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-war-plugin</artifactId>
@@ -59,6 +60,16 @@
             </configuration>
          </plugin>
          
+         <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>tomcat-maven-plugin</artifactId>
+            <configuration> 
+            <url>http://192.168.0.6:8080/manager/text</url>
+            <path>/emaillist01</path>
+            <username>admin</username>
+            <password>manager</password>
+            </configuration>
+         </plugin>
       </plugins>
    </build>
 </project>
